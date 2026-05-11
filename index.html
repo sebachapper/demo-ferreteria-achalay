@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ferretería Achalay — Pedro F. Berro 1174, Pocitos · Desde 1961</title>
-<meta name="description" content="Ferretería de barrio en Pocitos desde 1961. Herramientas, pintura, plomería, electricidad y todo para tu obra. Pedro F. Berro 1174, Montevideo. Abierto lun a sáb.">
+<meta name="description" content="Ferretería de barrio en Pocitos desde 1961. Herramientas, pintura, plomería, electricidad y todo para tu obra. Pedro F. Berro 1174, Montevideo.">
 <meta name="theme-color" content="#0E4B80">
 <link rel="icon" type="image/svg+xml" href="./logo.svg">
 <meta property="og:type" content="website">
@@ -13,51 +13,764 @@
 <meta property="og:image" content="./foto-fachada.jpg">
 <meta property="og:locale" content="es_UY">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="./colors_and_type.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Archivo:wght@500;600;700;800&family=Libre+Franklin:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  @keyframes pulse {
-    0%   { transform: scale(0.6); opacity: 0.9; }
-    100% { transform: scale(2.2); opacity: 0; }
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .fade-up { animation: fadeUp 700ms cubic-bezier(.22,.61,.36,1) both; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Libre Franklin', Georgia, sans-serif; background: #FDFCF8; color: #1A1410; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
 
-  @media (max-width: 880px) {
-    .v2-hero-grid { grid-template-columns: 1fr !important; }
-    .v2-trust-grid { grid-template-columns: repeat(2, 1fr) !important; row-gap: 32px !important; }
-    .v2-trust-grid > div { border-left: none !important; padding: 0 !important; }
-    .v2-cat-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    .v2-cat-grid > a:first-child { grid-column: span 2 !important; grid-row: span 1 !important; }
-    .v2-about-grid { grid-template-columns: 1fr !important; }
-    .v2-about-left { position: static !important; }
-    .v2-rev-layout { grid-template-columns: 1fr !important; }
-    .v2-rev-quotes { grid-template-columns: 1fr !important; }
-    .v2-ctc-layout { grid-template-columns: 1fr !important; }
-    .v2-ctc-row { grid-template-columns: 1fr 1fr !important; }
-    .v2-ft-inner { grid-template-columns: 1fr !important; gap: 32px !important; }
-    .v2-ft-bottom { flex-direction: column; gap: 8px; text-align: center; }
-    .v2-nav { grid-template-columns: 1fr auto !important; }
-    .v2-nav-links { display: none !important; }
-    .v2-ticker { font-size: 9.5px !important; gap: 8px !important; padding: 6px 12px !important; }
-    .v2-score-big { font-size: 110px !important; }
-  }
-  @media (max-width: 520px) {
-    .v2-cat-grid { grid-template-columns: 1fr !important; }
-    .v2-cat-grid > a:first-child { grid-column: span 1 !important; }
-    .v2-trust-grid { grid-template-columns: 1fr !important; }
-    .v2-ctc-row { grid-template-columns: 1fr !important; }
-    .v2-rev-quotes { grid-template-columns: 1fr !important; }
-  }
+@keyframes pulse { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(2.2); opacity: 0; } }
+
+/* ─── TICKER ─── */
+.ticker {
+  background: #1A1410;
+  color: #F0E9D8;
+  padding: 8px 24px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: #F07820; flex-shrink: 0; }
+
+/* ─── NAV ─── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: #FDFCF8;
+  border-bottom: 1px solid #E3DACA;
+  padding: 14px clamp(20px, 4vw, 40px);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+}
+.nav-brand { display: flex; align-items: center; gap: 14px; }
+.nav-brand img { width: 52px; height: 52px; }
+.nav-brand-name { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.02em; color: #1A1410; line-height: 1; }
+.nav-brand-sub { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.16em; color: #7A6E62; margin-top: 5px; }
+.nav-links { display: flex; justify-content: center; gap: 32px; }
+.nav-links a { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 14px; color: #1A1410; }
+.nav-links a:hover { color: #F07820; }
+.nav-cta {
+  background: #1565A8; color: #F07820;
+  font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px;
+  padding: 12px 8px 12px 18px; border-radius: 4px;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.nav-cta-arrow { background: #FDFCF8; width: 28px; height: 28px; border-radius: 2px; display: inline-flex; align-items: center; justify-content: center; margin-left: 4px; }
+
+/* ─── HERO ─── */
+.hero { background: #FDFCF8; padding: clamp(40px,6vw,72px) clamp(20px,4vw,40px) 0; }
+.hero-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px,4vw,56px); align-items: start; }
+.hero-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+.open-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px 6px 10px;
+  background: #F8F4EA; border: 1px solid #E3DACA; border-radius: 999px;
+  font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px;
+  letter-spacing: 0.06em; color: #1A1410; text-transform: uppercase;
+}
+.open-dot-wrap { position: relative; display: inline-flex; }
+.open-dot { width: 8px; height: 8px; border-radius: 50%; background: #B83A1F; }
+.open-dot.open { background: #2F7A3C; }
+.open-dot-pulse { position: absolute; inset: 0; border-radius: 50%; background: #2F7A3C; animation: pulse 2s ease-out infinite; }
+.hero-year-line { flex: 0 0 48px; height: 1px; background: #C9BFA9; }
+.hero-year { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.18em; color: #F07820; }
+.hero-title {
+  font-family: 'Fredoka', sans-serif; font-weight: 700;
+  font-size: clamp(56px, 8vw, 124px);
+  line-height: 0.92; letter-spacing: -0.035em;
+  color: #1A1410; margin: 0;
+}
+.hero-title-line1 { display: block; }
+.hero-title-line2 { display: flex; align-items: center; gap: 14px; }
+.hero-title-line2 .blue { color: #1565A8; }
+.hero-title-line2 .orange { color: #F07820; }
+.hero-title-amp { font-family: 'Libre Franklin', Georgia, sans-serif; font-style: italic; font-weight: 400; font-size: 0.55em; color: #7A6E62; margin-top: -0.05em; }
+.hero-title-line3 { display: block; font-family: 'Libre Franklin', Georgia, sans-serif; font-style: italic; font-weight: 400; font-size: 0.42em; color: #4A3F36; letter-spacing: -0.005em; margin-top: 18px; padding-left: 6px; }
+.hero-title-line4 { display: block; font-family: 'Libre Franklin', Georgia, sans-serif; font-style: italic; font-weight: 400; font-size: 0.58em; color: #1A1410; letter-spacing: -0.01em; padding-left: 6px; margin-top: 2px; }
+.hero-body { margin-top: 36px; max-width: 460px; }
+.hero-lead { font-size: 17px; line-height: 1.6; color: #4A3F36; margin-bottom: 24px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.btn-primary { background: #1565A8; color: #F07820; padding: 14px 22px; border-radius: 4px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 10px; }
+.btn-ghost { color: #1A1410; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 8px; border-bottom: 1.5px solid #1A1410; padding-bottom: 2px; }
+.hero-right { position: relative; }
+.hero-photo-wrap { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 4/5; }
+.hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.03) saturate(1.05); }
+.hero-photo-badge { position: absolute; top: 20px; left: 20px; background: #F07820; color: white; padding: 10px 14px; border-radius: 4px; box-shadow: 4px 4px 0 #1A1410; text-align: center; }
+.hero-photo-badge-top { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 9.5px; letter-spacing: 0.18em; }
+.hero-photo-badge-num { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 32px; line-height: 1; letter-spacing: -0.02em; margin: 2px 0; }
+.hero-photo-badge-bot { font-family: 'Libre Franklin', Georgia, sans-serif; font-style: italic; font-size: 11px; line-height: 1; }
+.hero-photo-tag { position: absolute; bottom: 16px; left: 16px; background: #FDFCF8; padding: 7px 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em; color: #1A1410; }
+.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #E3DACA; border: 1px solid #E3DACA; border-radius: 6px; overflow: hidden; margin-top: 14px; }
+.hero-stat { background: #FDFCF8; padding: 16px 14px; }
+.hero-stat-num { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 36px; line-height: 1; color: #1A1410; display: flex; align-items: baseline; gap: 6px; }
+.hero-stat-sub { font-family: 'Libre Franklin', Georgia, sans-serif; font-style: italic; font-size: 13px; color: #7A6E62; }
+.hero-stat-lbl { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 11.5px; letter-spacing: 0.06em; color: #4A3F36; margin-top: 8px; }
+
+/* ─── TILE STRIPE ─── */
+.tile-stripe { padding: 10px 0; display: flex; gap: 4px; }
+.tile { flex: 1; outline: 2px solid #FDFCF8; }
+
+/* ─── TRUST BAND ─── */
+.trust-band { background: #0E4B80; color: white; }
+.trust-inner { max-width: 1280px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,40px); }
+.trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.trust-item { padding: 0 28px; border-left: 1px solid rgba(255,255,255,0.15); }
+.trust-item:first-child { border-left: none; }
+.trust-kicker { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; color: #F07820; text-transform: uppercase; margin-bottom: 12px; }
+.trust-num-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 12px; }
+.trust-num { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 80px; line-height: 0.85; letter-spacing: -0.04em; color: white; }
+.trust-unit { font-family: 'Libre Franklin', Georgia, sans-serif; font-style: italic; font-size: 18px; color: #A8D0E8; }
+.trust-desc { font-size: 14px; line-height: 1.55; color: #D4E3F0; }
+
+/* ─── SECTION HEADER ─── */
+.section-header { margin-bottom: 36px; }
+.section-header.center { text-align: center; max-width: 720px; margin-left: auto; margin-right: auto; }
+.section-num-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.section-header.center .section-num-row { justify-content: center; }
+.section-num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.2em; color: #F07820; }
+.section-num-line { width: 28px; height: 1px; background: #C9BFA9; }
+.section-kicker { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.18em; color: #1565A8; text-transform: uppercase; }
+.section-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(36px,4.5vw,60px); line-height: 1.0; letter-spacing: -0.025em; color: #1A1410; }
+.section-title.white { color: #FDFCF8; }
+.section-lead { font-size: 17px; line-height: 1.65; color: #4A3F36; margin-top: 14px; max-width: 580px; }
+.section-lead.light { color: #E0CFA8; }
+
+/* ─── CATEGORIES ─── */
+.categories-section { background: #FDFCF8; padding: clamp(64px,8vw,112px) clamp(20px,4vw,40px); }
+.categories-inner { max-width: 1280px; margin: 0 auto; }
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(190px, auto); gap: 14px; }
+.cat-feature {
+  grid-column: span 2; grid-row: span 2;
+  background: #1A1410; color: white;
+  padding: 28px 28px 24px; border-radius: 6px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+}
+.cat-feature-label { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.22em; color: #F07820; position: relative; z-index: 1; }
+.cat-feature-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(40px,4.5vw,64px); line-height: 0.95; letter-spacing: -0.03em; position: relative; z-index: 1; margin: 12px 0; }
+.cat-feature-foot { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 18px; font-style: italic; font-size: 14px; color: #E0CFA8; position: relative; z-index: 1; }
+.cat-feature-icon { position: absolute; right: -20px; top: -10px; transform: rotate(-15deg); opacity: 0.15; }
+.cat-card { background: #F8F4EA; border-radius: 6px; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 6px; border: 1px solid #E3DACA; }
+.cat-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
+.cat-card-ico { width: 44px; height: 44px; border-radius: 4px; background: #FDFCF8; border: 1px solid #E3DACA; display: flex; align-items: center; justify-content: center; }
+.cat-card-name { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 22px; line-height: 1; letter-spacing: -0.01em; color: #1A1410; }
+.cat-card-brands { font-size: 13px; color: #4A3F36; line-height: 1.4; }
+.cat-card-stock { margin-top: auto; padding-top: 10px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: 0.14em; color: #F07820; text-transform: uppercase; }
+
+/* ─── ABOUT ─── */
+.about-section { background: #F8F4EA; }
+.about-inner { max-width: 1280px; margin: 0 auto; padding: clamp(72px,9vw,120px) clamp(20px,4vw,40px); }
+.about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px,5vw,64px); align-items: start; }
+.about-left { position: sticky; top: 100px; }
+.about-lead { font-size: 19px; line-height: 1.6; color: #1A1410; margin: 0 0 16px; }
+.about-body { font-size: 16px; line-height: 1.7; color: #4A3F36; margin: 0 0 32px; }
+.about-list { list-style: none; display: flex; flex-direction: column; gap: 18px; border-top: 1px solid #C9BFA9; padding-top: 24px; }
+.about-li { display: flex; gap: 18px; align-items: baseline; }
+.about-li-num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.2em; color: #F07820; flex-shrink: 0; }
+.about-li-k { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 18px; color: #1A1410; margin-bottom: 3px; }
+.about-li-v { font-size: 14.5px; color: #4A3F36; line-height: 1.5; }
+.about-right { display: flex; flex-direction: column; gap: 14px; }
+.about-big-photo { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 4/4.4; }
+.about-big-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-pull-quote { position: absolute; left: 24px; right: 24px; bottom: 24px; background: #F07820; color: white; padding: 22px 26px 20px; border-radius: 4px; box-shadow: 5px 5px 0 rgba(26,20,16,0.85); }
+.about-pull-mark { font-family: Georgia, serif; font-size: 56px; line-height: 0.5; position: absolute; top: 30px; left: 18px; opacity: 0.6; }
+.about-pull-txt { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 8px 28px; }
+.about-pull-sig { font-style: italic; font-size: 12px; opacity: 0.9; margin-left: 28px; }
+.about-small-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.about-small-photo { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 4/3; }
+.about-small-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-small-cap { position: absolute; bottom: 10px; left: 10px; background: #1A1410; color: #F0E9D8; padding: 5px 10px; border-radius: 2px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 9.5px; letter-spacing: 0.16em; }
+
+/* ─── REVIEWS ─── */
+.reviews-section { background: #FDFCF8; padding: clamp(72px,9vw,120px) clamp(20px,4vw,40px); }
+.reviews-inner { max-width: 1280px; margin: 0 auto; }
+.reviews-layout { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 28px; align-items: stretch; }
+.score-card { background: #1A1410; color: #FDFCF8; padding: 36px 32px; border-radius: 6px; display: flex; flex-direction: column; justify-content: space-between; }
+.score-top { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.22em; color: #F07820; }
+.score-big { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 160px; line-height: 0.82; letter-spacing: -0.05em; color: #FDFCF8; margin: 24px 0 12px; }
+.score-stars { display: flex; gap: 4px; margin-bottom: 8px; }
+.score-meta { font-style: italic; font-size: 16px; color: #E0CFA8; margin-bottom: 20px; }
+.score-link { color: #F07820; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; display: inline-flex; align-items: center; gap: 8px; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 18px; }
+.reviews-quotes { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 14px; }
+.review-quote { padding: 24px 26px; border-radius: 6px; border: 1px solid #E3DACA; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
+.review-quote-txt { font-style: italic; font-size: 17px; line-height: 1.5; color: #1A1410; }
+.review-quote-author { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 16px; color: #1A1410; }
+.review-quote-role { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 11.5px; letter-spacing: 0.06em; color: #7A6E62; margin-top: 2px; }
+
+/* ─── CONTACT ─── */
+.contact-section { background: #0E4B80; color: #FDFCF8; }
+.contact-inner { max-width: 1280px; margin: 0 auto; padding: clamp(64px,8vw,100px) clamp(20px,4vw,40px); }
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px,4vw,56px); align-items: stretch; margin-top: 0; }
+.contact-left { display: flex; flex-direction: column; gap: 28px; }
+.contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.16); }
+.contact-lbl { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; color: #F07820; margin-bottom: 8px; text-transform: uppercase; }
+.contact-val { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 26px; color: #FDFCF8; letter-spacing: -0.01em; display: block; }
+.contact-val:hover { color: #F07820; }
+.contact-sub { font-style: italic; font-size: 13px; color: #A8C0DC; margin-top: 4px; }
+.contact-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-contact-primary { background: #FDFCF8; color: #1565A8; padding: 14px 22px; border-radius: 4px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 10px; }
+.btn-contact-outline { background: transparent; color: #FDFCF8; padding: 13px 22px; border-radius: 4px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 10px; border: 1.5px solid rgba(255,255,255,0.45); }
+
+/* ─── MAP GRAPHIC ─── */
+.map-wrap { background: #1565A8; border-radius: 6px; overflow: hidden; height: 100%; min-height: 480px; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.12); }
+.map-grid { flex: 1; position: relative; overflow: hidden; }
+.map-street { position: absolute; background: #F0E9D8; opacity: 0.85; }
+.map-block { position: absolute; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 2px; }
+.map-pin-anchor { position: absolute; left: 38%; top: 36%; display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 10; }
+.map-pin-pulse { position: absolute; top: -8px; width: 48px; height: 48px; border-radius: 50%; background: rgba(240,120,32,0.35); animation: pulse 2.4s ease-out infinite; }
+.map-pin { width: 38px; height: 38px; border-radius: 50%; background: #F07820; box-shadow: 3px 3px 0 #1A1410, 0 0 0 4px #FDFCF8; display: flex; align-items: center; justify-content: center; position: relative; }
+.map-pin-label { background: #1A1410; color: #FDFCF8; padding: 4px 9px; border-radius: 2px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 10px; letter-spacing: 0.18em; }
+.map-street-lbl { position: absolute; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.16em; color: #FDFCF8; opacity: 0.5; }
+.map-footer { background: #FDFCF8; color: #1A1410; padding: 16px 22px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.map-footer-lbl { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.18em; color: #7A6E62; }
+.map-footer-val { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 17px; margin-top: 2px; color: #1A1410; }
+.map-footer-link { background: #1565A8; color: #FDFCF8; padding: 10px 14px; border-radius: 4px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.06em; display: inline-flex; align-items: center; gap: 8px; }
+
+/* ─── FOOTER ─── */
+.footer { background: #1A1410; color: #F0E9D8; padding: clamp(48px,6vw,80px) clamp(20px,4vw,40px) 24px; }
+.footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.footer-brand-row { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.footer-brand-row img { width: 56px; height: 56px; }
+.footer-brand-name { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 32px; letter-spacing: -0.02em; color: #FDFCF8; line-height: 1; }
+.footer-brand-tag { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.16em; color: #F07820; margin-top: 6px; text-transform: uppercase; }
+.footer-quote { font-style: italic; font-size: 15px; line-height: 1.6; color: #A89C8E; max-width: 480px; }
+.footer-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.footer-col-title { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; color: #7A6E62; margin-bottom: 14px; text-transform: uppercase; }
+.footer-col a { display: block; font-family: 'Fredoka', sans-serif; font-weight: 500; font-size: 16px; color: #F0E9D8; padding: 4px 0; }
+.footer-bottom { max-width: 1280px; margin: 24px auto 0; display: flex; justify-content: space-between; font-family: 'Archivo', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: #7A6E62; text-transform: uppercase; }
+
+/* ─── FAB ─── */
+.wa-fab { position: fixed; right: 22px; bottom: 22px; z-index: 200; width: 60px; height: 60px; border-radius: 50%; background: #1565A8; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(21,101,168,0.45), 4px 4px 0 #1A1410; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 880px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: repeat(2,1fr); row-gap: 32px; }
+  .trust-item { border-left: none !important; padding: 0; }
+  .cat-grid { grid-template-columns: repeat(2,1fr); }
+  .cat-feature { grid-column: span 2; grid-row: span 1; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-left { position: static; }
+  .reviews-layout { grid-template-columns: 1fr; }
+  .reviews-quotes { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .contact-row { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .nav { grid-template-columns: 1fr auto; }
+  .nav-links { display: none; }
+  .ticker { font-size: 9.5px; gap: 8px; padding: 6px 12px; }
+  .score-big { font-size: 110px; }
+}
+@media (max-width: 520px) {
+  .cat-grid { grid-template-columns: 1fr; }
+  .cat-feature { grid-column: span 1; }
+  .trust-grid { grid-template-columns: 1fr; }
+  .contact-row { grid-template-columns: 1fr; }
+  .reviews-quotes { grid-template-columns: 1fr; }
+}
 </style>
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
 </head>
 <body>
-  <div id="root"></div>
-  <script type="text/babel" data-presets="react" src="./components.jsx"></script>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span>POCITOS · MONTEVIDEO</span>
+  <span class="ticker-dot"></span>
+  <span>FUNDADA EN 1961</span>
+  <span class="ticker-dot"></span>
+  <span>LUN A VIE 8:30 – 19:30 · SÁB 9 – 14</span>
+  <span class="ticker-dot"></span>
+  <span>2709 2414</span>
+  <span class="ticker-dot"></span>
+  <span>WHATSAPP 099 913 909</span>
+</div>
+
+<!-- NAV -->
+<header>
+  <nav class="nav">
+    <a href="#" class="nav-brand">
+      <img src="./logo.svg" alt="Achalay">
+      <div>
+        <div class="nav-brand-name">Achalay</div>
+        <div class="nav-brand-sub">FERRETERÍA · PEDRO F. BERRO 1174</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#rubros">Rubros</a>
+      <a href="#historia">Historia</a>
+      <a href="#resenas">Reseñas</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="https://wa.me/59899913909" class="nav-cta">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#F07820"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span>Escribinos</span>
+      <span class="nav-cta-arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F07820" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-meta">
+        <span class="open-badge" id="open-badge">
+          <span class="open-dot-wrap">
+            <span class="open-dot" id="open-dot"></span>
+          </span>
+          <span id="open-label">Cargando...</span>
+        </span>
+        <span class="hero-year-line"></span>
+        <span class="hero-year">EST. 1961</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-title-line1">Ferretería</span>
+        <span class="hero-title-line2">
+          <span class="blue">de</span>
+          <span class="hero-title-amp">&amp;</span>
+          <span class="orange">barrio</span>
+        </span>
+        <span class="hero-title-line3">desde hace</span>
+        <span class="hero-title-line4">seis décadas</span>
+      </h1>
+      <div class="hero-body">
+        <p class="hero-lead">Herramientas, pintura, plomería, electricidad y todo lo que un proyecto necesita. En Pedro F.&nbsp;Berro desde que esto era barrio de tranvías.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/59899913909?text=Hola%2C%20quisiera%20consultar%20sobre%20un%20producto" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F07820"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultá por WhatsApp
+          </a>
+          <a href="#contacto" class="btn-ghost">
+            Cómo llegar
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo-wrap">
+        <img src="./foto-fachada.jpg" alt="Fachada de Ferretería Achalay en Pedro F. Berro">
+        <div class="hero-photo-badge">
+          <div class="hero-photo-badge-top">EL LOCAL</div>
+          <div class="hero-photo-badge-num">1174</div>
+          <div class="hero-photo-badge-bot">Pedro F. Berro</div>
+        </div>
+        <div class="hero-photo-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F07820" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Pocitos · Montevideo
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">65<span class="hero-stat-sub">años</span></div>
+          <div class="hero-stat-lbl">Atendiendo al barrio</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">4.4
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#F07820" style="align-self:center"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="hero-stat-lbl">234 reseñas Google</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">8<span class="hero-stat-sub">rubros</span></div>
+          <div class="hero-stat-lbl">Bajo un mismo techo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAND -->
+<section class="trust-band">
+  <div class="tile-stripe" style="background:#0E4B80">
+    <div class="tile" style="background:#C8A8C8;height:14px"></div><div class="tile" style="background:#8B6F8B;height:14px"></div><div class="tile" style="background:#E0CFA8;height:14px"></div><div class="tile" style="background:#C9A878;height:14px"></div><div class="tile" style="background:#84B8C8;height:14px"></div><div class="tile" style="background:#E8DFC9;height:14px"></div><div class="tile" style="background:#C95C3F;height:14px"></div><div class="tile" style="background:#A66060;height:14px"></div><div class="tile" style="background:#8B7CA8;height:14px"></div><div class="tile" style="background:#6BA89C;height:14px"></div><div class="tile" style="background:#E8DFC9;height:14px"></div><div class="tile" style="background:#B83A2F;height:14px"></div><div class="tile" style="background:#C8A8C8;height:14px"></div><div class="tile" style="background:#8B6F8B;height:14px"></div><div class="tile" style="background:#E0CFA8;height:14px"></div><div class="tile" style="background:#C9A878;height:14px"></div>
+  </div>
+  <div class="trust-inner">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="trust-kicker">Trayectoria</div>
+        <div class="trust-num-row"><span class="trust-num">65</span><span class="trust-unit">años</span></div>
+        <p class="trust-desc">Tres generaciones en el mismo local de Pedro F. Berro.</p>
+      </div>
+      <div class="trust-item">
+        <div class="trust-kicker">Reseñas</div>
+        <div class="trust-num-row"><span class="trust-num">4.4</span><span class="trust-unit">/5</span></div>
+        <p class="trust-desc">234 opiniones reales de vecinos en Google Maps.</p>
+      </div>
+      <div class="trust-item">
+        <div class="trust-kicker">Horario</div>
+        <div class="trust-num-row"><span class="trust-num">11</span><span class="trust-unit">h/día</span></div>
+        <p class="trust-desc">Abiertos lunes a viernes 8:30 – 19:30, sábados hasta las 14.</p>
+      </div>
+      <div class="trust-item">
+        <div class="trust-kicker">Stock</div>
+        <div class="trust-num-row"><span class="trust-num">8</span><span class="trust-unit">rubros</span></div>
+        <p class="trust-desc">De la canilla que pierde al adhesivo que falta para terminar la obra.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories-section" id="rubros">
+  <div class="categories-inner">
+    <div class="section-header">
+      <div class="section-num-row"><span class="section-num">01</span><span class="section-num-line"></span><span class="section-kicker">Lo que encontrás</span></div>
+      <h2 class="section-title">Todo lo que el oficio<br>necesita, en un solo lugar.</h2>
+      <p class="section-lead">Ocho rubros, stock permanente y la atención de alguien que sabe explicarte qué tornillo va, sin venderte lo que no necesitás.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-feature">
+        <div class="cat-feature-label">HERRAMIENTAS</div>
+        <div class="cat-feature-title">De mano,<br>eléctricas<br>&amp; <em>STIHL</em>.</div>
+        <div class="cat-feature-foot">
+          <span>Marcas profesionales</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F07820" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <div class="cat-feature-icon">
+          <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.5 8.5a2.12 2.12 0 1 1-3-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h2.47l2.26 1.91"/></svg>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-top">
+          <div class="cat-card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1565A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 11h2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3h2"/><path d="M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"/><path d="M9 16v3a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-3"/></svg></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7A6E62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <div class="cat-card-name">Pintura</div>
+        <div class="cat-card-brands">Sinteplast · Rex · Alba</div>
+        <div class="cat-card-stock">120+ tonos</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-top">
+          <div class="cat-card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1565A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7A6E62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <div class="cat-card-name">Electricidad</div>
+        <div class="cat-card-brands">Cables · tableros · llaves</div>
+        <div class="cat-card-stock">60+ referencias</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-top">
+          <div class="cat-card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1565A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7A6E62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <div class="cat-card-name">Plomería</div>
+        <div class="cat-card-brands">Grifería · sellos · caños</div>
+        <div class="cat-card-stock">90+ referencias</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-top">
+          <div class="cat-card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1565A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7A6E62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <div class="cat-card-name">Construcción</div>
+        <div class="cat-card-brands">Adhesivos · membranas · yeso</div>
+        <div class="cat-card-stock">A pedido</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-top">
+          <div class="cat-card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1565A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7A6E62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <div class="cat-card-name">Cerrajería</div>
+        <div class="cat-card-brands">Cerraduras · candados · bisagras</div>
+        <div class="cat-card-stock">40+ referencias</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-top">
+          <div class="cat-card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1565A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5"/><path d="M12 7.5a4.5 4.5 0 1 0-4.5 4.5"/><path d="M12 16.5a4.5 4.5 0 1 1-4.5-4.5"/><path d="M12 16.5a4.5 4.5 0 1 0 4.5-4.5"/></svg></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7A6E62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <div class="cat-card-name">Jardín</div>
+        <div class="cat-card-brands">Regaderas · mangueras · tijeras</div>
+        <div class="cat-card-stock">Por temporada</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-top">
+          <div class="cat-card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1565A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/><path d="m5.6 5.6 2.1 2.1"/><path d="m16.3 16.3 2.1 2.1"/><path d="m5.6 18.4 2.1-2.1"/><path d="m16.3 7.7 2.1-2.1"/></svg></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7A6E62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <div class="cat-card-name">Limpieza</div>
+        <div class="cat-card-brands">Artículos para el hogar</div>
+        <div class="cat-card-stock">Marcas locales</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="historia">
+  <div class="tile-stripe" style="background:#F8F4EA">
+    <div class="tile" style="background:#C8A8C8;height:12px"></div><div class="tile" style="background:#8B6F8B;height:12px"></div><div class="tile" style="background:#E0CFA8;height:12px"></div><div class="tile" style="background:#C9A878;height:12px"></div><div class="tile" style="background:#84B8C8;height:12px"></div><div class="tile" style="background:#E8DFC9;height:12px"></div><div class="tile" style="background:#C95C3F;height:12px"></div><div class="tile" style="background:#A66060;height:12px"></div><div class="tile" style="background:#8B7CA8;height:12px"></div><div class="tile" style="background:#6BA89C;height:12px"></div><div class="tile" style="background:#E8DFC9;height:12px"></div><div class="tile" style="background:#B83A2F;height:12px"></div><div class="tile" style="background:#C8A8C8;height:12px"></div><div class="tile" style="background:#8B6F8B;height:12px"></div><div class="tile" style="background:#E0CFA8;height:12px"></div><div class="tile" style="background:#C9A878;height:12px"></div>
+  </div>
+  <div class="about-inner">
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="section-header">
+          <div class="section-num-row"><span class="section-num">02</span><span class="section-num-line"></span><span class="section-kicker">Nuestra historia</span></div>
+          <h2 class="section-title">Pedro F. Berro,<br>esquina de siempre.</h2>
+        </div>
+        <p class="about-lead">Abrimos en <strong>1961</strong>, cuando Pocitos todavía tenía obras nuevas en cada cuadra y los albañiles cruzaban a comprar tornillos sueltos. Sesenta y cinco años después, seguimos en el mismo local.</p>
+        <p class="about-body">No somos una cadena. No tenemos catálogo online infinito. Lo que tenemos es lo que la gente del barrio nos pide hace décadas: stock real de las marcas que se usan en serio, y alguien atrás del mostrador que distingue un tornillo Phillips de un Pozidriv.</p>
+        <ul class="about-list">
+          <li class="about-li"><span class="about-li-num">01</span><div><div class="about-li-k">Atención</div><div class="about-li-v">Te explican qué necesitás antes de cobrarte.</div></div></li>
+          <li class="about-li"><span class="about-li-num">02</span><div><div class="about-li-k">Stock</div><div class="about-li-v">Marcas profesionales, no las del supermercado.</div></div></li>
+          <li class="about-li"><span class="about-li-num">03</span><div><div class="about-li-k">Servicio</div><div class="about-li-v">Respondemos consultas por WhatsApp en el día.</div></div></li>
+        </ul>
+      </div>
+      <div class="about-right">
+        <div class="about-big-photo">
+          <img src="./foto-interior.jpg" alt="Interior de Ferretería Achalay">
+          <div class="about-pull-quote">
+            <span class="about-pull-mark">"</span>
+            <p class="about-pull-txt">Venís con el problema. Te vas con la solución.</p>
+            <div class="about-pull-sig">— Una promesa, no un slogan</div>
+          </div>
+        </div>
+        <div class="about-small-row">
+          <div class="about-small-photo">
+            <img src="./foto-fachada.jpg" alt="Fachada azul ornamentada del local">
+            <div class="about-small-cap">LA FACHADA ICÓNICA</div>
+          </div>
+          <div class="about-small-photo">
+            <img src="./foto-exterior-cartel.jpg" alt="Cartel de Ferretería Achalay">
+            <div class="about-small-cap">60 AÑOS EN EL BARRIO</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="resenas">
+  <div class="reviews-inner">
+    <div class="section-header">
+      <div class="section-num-row"><span class="section-num">03</span><span class="section-num-line"></span><span class="section-kicker">Lo que dicen</span></div>
+      <h2 class="section-title">Reseñas de vecinos<br>y profesionales.</h2>
+      <p class="section-lead">Más de doscientos clientes nos puntuaron en Google Maps. Acá un par de cosas que escribieron.</p>
+    </div>
+    <div class="reviews-layout">
+      <div class="score-card">
+        <div class="score-top">EN GOOGLE MAPS</div>
+        <div class="score-big">4.4</div>
+        <div class="score-stars">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#F07820"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#F07820"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#F07820"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#F07820"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F07820" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="score-meta">234 reseñas</div>
+        <a href="https://maps.google.com/?q=Ferreteria+Achalay+Pocitos+Montevideo" target="_blank" rel="noopener" class="score-link">
+          Ver en Google Maps
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F07820" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+      <div class="reviews-quotes">
+        <div class="review-quote" style="background:#F8F4EA">
+          <p class="review-quote-txt">"Muy buena atención, tienen de todo y a buen precio. El personal siempre dispuesto a ayudar y orientar."</p>
+          <div><div class="review-quote-author">M. González</div><div class="review-quote-role">Vecina de Pocitos · ★★★★★</div></div>
+        </div>
+        <div class="review-quote" style="background:#FFF5EB">
+          <p class="review-quote-txt">"Voy desde hace años. Te asesoran bien, no te venden lo que no necesitás. Una ferretería como las de antes."</p>
+          <div><div class="review-quote-author">R. Pereyra</div><div class="review-quote-role">Plomero · ★★★★★</div></div>
+        </div>
+        <div class="review-quote" style="background:#EDF3F9">
+          <p class="review-quote-txt">"Encontré un repuesto que no encontraba en ningún lado. Te conocen y te resuelven."</p>
+          <div><div class="review-quote-author">L. Méndez</div><div class="review-quote-role">Cliente Google · ★★★★</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contacto">
+  <div class="tile-stripe" style="background:#0E4B80">
+    <div class="tile" style="background:#C8A8C8;height:14px"></div><div class="tile" style="background:#8B6F8B;height:14px"></div><div class="tile" style="background:#E0CFA8;height:14px"></div><div class="tile" style="background:#C9A878;height:14px"></div><div class="tile" style="background:#84B8C8;height:14px"></div><div class="tile" style="background:#E8DFC9;height:14px"></div><div class="tile" style="background:#C95C3F;height:14px"></div><div class="tile" style="background:#A66060;height:14px"></div><div class="tile" style="background:#8B7CA8;height:14px"></div><div class="tile" style="background:#6BA89C;height:14px"></div><div class="tile" style="background:#E8DFC9;height:14px"></div><div class="tile" style="background:#B83A2F;height:14px"></div><div class="tile" style="background:#C8A8C8;height:14px"></div><div class="tile" style="background:#8B6F8B;height:14px"></div><div class="tile" style="background:#E0CFA8;height:14px"></div><div class="tile" style="background:#C9A878;height:14px"></div>
+  </div>
+  <div class="contact-inner">
+    <div class="section-header">
+      <div class="section-num-row"><span class="section-num" style="color:#F07820">04</span><span class="section-num-line"></span><span class="section-kicker" style="color:#A8C0DC">Vení al local</span></div>
+      <h2 class="section-title white">Pedro F. Berro 1174,<br>esquina de barrio.</h2>
+      <p class="section-lead light">Estamos abiertos seis días por semana, hablamos por teléfono y respondemos WhatsApp en el día.</p>
+    </div>
+    <div class="contact-layout">
+      <div class="contact-left">
+        <div class="contact-row">
+          <div>
+            <div class="contact-lbl">Dirección</div>
+            <a href="https://maps.google.com/?q=Pedro+F+Berro+1174+Pocitos+Montevideo" target="_blank" rel="noopener" class="contact-val">Pedro F. Berro 1174</a>
+            <div class="contact-sub">Pocitos, Montevideo</div>
+          </div>
+          <div>
+            <div class="contact-lbl">Teléfono</div>
+            <a href="tel:+59827092414" class="contact-val">2709 2414</a>
+            <div class="contact-sub">también 2709 3827</div>
+          </div>
+        </div>
+        <div class="contact-row" style="border-bottom:none">
+          <div>
+            <div class="contact-lbl">WhatsApp</div>
+            <a href="https://wa.me/59899913909" class="contact-val">099 913 909</a>
+            <div class="contact-sub">respuesta en el día</div>
+          </div>
+          <div>
+            <div class="contact-lbl">Horario</div>
+            <div class="contact-val" style="cursor:default">Lun–Vie 8:30–19:30</div>
+            <div class="contact-sub">Sábado 9:00–14:00</div>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a href="https://wa.me/59899913909?text=Hola%2C%20quisiera%20consultar%20sobre%20un%20producto" target="_blank" rel="noopener" class="btn-contact-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1565A8"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Escribir por WhatsApp
+          </a>
+          <a href="tel:+59827092414" class="btn-contact-outline">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FDFCF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Llamar al local
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <div class="map-grid">
+            <div class="map-street" style="top:38%;left:0;right:0;height:22px;transform:rotate(-2deg)"></div>
+            <div class="map-street" style="top:0;bottom:0;left:34%;width:18px"></div>
+            <div class="map-street" style="top:0;bottom:0;left:72%;width:14px;opacity:.7"></div>
+            <div class="map-street" style="top:72%;left:0;right:0;height:12px;opacity:.7"></div>
+            <div class="map-block" style="left:4%;top:4%;width:26%;height:30%"></div>
+            <div class="map-block" style="left:34%;top:4%;width:34%;height:30%"></div>
+            <div class="map-block" style="left:70%;top:4%;width:25%;height:30%"></div>
+            <div class="map-block" style="left:4%;top:42%;width:26%;height:28%"></div>
+            <div class="map-block" style="left:38%;top:42%;width:30%;height:28%"></div>
+            <div class="map-block" style="left:70%;top:42%;width:25%;height:28%"></div>
+            <div class="map-block" style="left:4%;top:74%;width:26%;height:22%"></div>
+            <div class="map-block" style="left:38%;top:74%;width:34%;height:22%"></div>
+            <div class="map-block" style="left:76%;top:74%;width:18%;height:22%"></div>
+            <div class="map-pin-anchor">
+              <div class="map-pin-pulse"></div>
+              <div class="map-pin">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="map-pin-label">ACHALAY</div>
+            </div>
+            <div class="map-street-lbl" style="top:34%;left:6%;transform:rotate(-2deg)">PEDRO F. BERRO</div>
+            <div class="map-street-lbl" style="top:8%;left:38%">26 DE MARZO</div>
+            <div class="map-street-lbl" style="top:8%;left:74%">MASSINI</div>
+          </div>
+          <div class="map-footer">
+            <div>
+              <div class="map-footer-lbl">UBICACIÓN</div>
+              <div class="map-footer-val">Pedro F. Berro &amp; 26 de Marzo</div>
+            </div>
+            <a href="https://maps.google.com/?q=Pedro+F+Berro+1174+Pocitos+Montevideo" target="_blank" rel="noopener" class="map-footer-link">
+              Abrir en Google Maps
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-row">
+        <img src="./logo.svg" alt="Achalay">
+        <div>
+          <div class="footer-brand-name">Achalay</div>
+          <div class="footer-brand-tag">Ferretería · Pocitos · 1961</div>
+        </div>
+      </div>
+      <p class="footer-quote">"Una ferretería de barrio, soluciones de verdad." — Pedro F. Berro 1174, Montevideo, Uruguay.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-title">Sitio</div>
+        <a href="#rubros">Rubros</a>
+        <a href="#historia">Historia</a>
+        <a href="#resenas">Reseñas</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contacto</div>
+        <a href="tel:+59827092414">2709 2414</a>
+        <a href="tel:+59827093827">2709 3827</a>
+        <a href="https://wa.me/59899913909">099 913 909</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Ferretería Achalay</span>
+    <span>Diseñado en Montevideo · UY</span>
+  </div>
+</footer>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/59899913909" class="wa-fab" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#F07820"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+(function() {
+  function updateOpenStatus() {
+    var now = new Date();
+    var uy = new Date(now.getTime() + (now.getTimezoneOffset() - 180) * 60000);
+    var day = uy.getDay();
+    var minutes = uy.getHours() * 60 + uy.getMinutes();
+    var open = false, label = 'Cerrado';
+    if (day >= 1 && day <= 5) {
+      if (minutes >= 510 && minutes < 1170) { open = true; label = 'Abierto ahora · cierra 19:30'; }
+      else if (minutes < 510) label = 'Cerrado · abre 8:30';
+      else label = day === 5 ? 'Cerrado · abre sáb 9:00' : 'Cerrado · abre 8:30';
+    } else if (day === 6) {
+      if (minutes >= 540 && minutes < 840) { open = true; label = 'Abierto ahora · cierra 14:00'; }
+      else if (minutes < 540) label = 'Cerrado · abre 9:00';
+      else label = 'Cerrado · abre lun 8:30';
+    } else { label = 'Cerrado · abre lun 8:30'; }
+
+    var dot = document.getElementById('open-dot');
+    var lbl = document.getElementById('open-label');
+    if (dot && lbl) {
+      lbl.textContent = label;
+      if (open) {
+        dot.classList.add('open');
+        var pulse = dot.parentElement.querySelector('.open-dot-pulse');
+        if (!pulse) {
+          pulse = document.createElement('span');
+          pulse.className = 'open-dot-pulse';
+          dot.parentElement.appendChild(pulse);
+        }
+      } else {
+        dot.classList.remove('open');
+        var pulse = dot.parentElement.querySelector('.open-dot-pulse');
+        if (pulse) pulse.remove();
+      }
+    }
+  }
+  updateOpenStatus();
+  setInterval(updateOpenStatus, 60000);
+})();
+</script>
 </body>
 </html>
